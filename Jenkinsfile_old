@@ -1,7 +1,5 @@
 pipeline {
-     agent {
-        docker { image '10.20.1-alpine3.10' }
-    }
+     agent any
      stages {
          stage('Build') {
              steps {
@@ -12,14 +10,9 @@ pipeline {
                  '''
              }
          }
-         stage('Lint') {
+         stage('Lint HTML') {
               steps {
-                  sh 'npm run lint'
-              }
-         }
-         stage('Test') {
-              steps {
-                  sh 'npm run test'
+                  sh 'tidy -q -e *.html'
               }
          }
      }
