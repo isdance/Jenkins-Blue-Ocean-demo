@@ -3,17 +3,14 @@ pipeline {
      stages {
          stage('Build') {
              steps {
-                 sh 'echo "Hello World"'
-                 sh '''
-                     echo "Multiline shell steps works too"
-                     ls -lah
-                 '''
+                 sh 'echo "Build Start"'
+                 sh 'npm install --loglevel verbose'
+                 sh 'npm run build'
              }
          }
          stage('Lint') {
               steps {
-                  sh 'sudo npm install --loglevel verbose'
-                  sh 'sudo npm run lint'
+                  sh 'npm run lint'
               }
          }
          stage('Test') {
