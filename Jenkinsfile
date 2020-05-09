@@ -18,7 +18,7 @@ pipeline {
          }
          stage('Test') {
               steps {
-                  sh 'sudo npm run test'
+                  sh 'CI=true npm test'
               }
          }
      }
