@@ -12,7 +12,7 @@ pipeline {
          }
          stage('Lint') {
               steps {
-                  sh 'sudo npm install'
+                  sh 'sudo npm install --loglevel verbose'
                   sh 'sudo npm run lint'
               }
          }
